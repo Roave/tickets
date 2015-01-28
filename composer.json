@@ -1,12 +1,12 @@
 {
-    "name": "zendframework/skeleton-application",
-    "description": "Skeleton Application for ZF2",
+    "name": "roave/tickets",
+    "description": "Manager your client stuff with roave tickets",
     "license": "BSD-3-Clause",
     "keywords": [
-        "framework",
-        "zf2"
+        "roave",
+        "tickets"
     ],
-    "homepage": "http://framework.zend.com/",
+    "homepage": "http://roave.com/",
     "require": {
         "php": ">=5.3.3",
         "zendframework/zendframework": "2.3.*",
