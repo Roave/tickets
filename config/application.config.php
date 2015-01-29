@@ -2,6 +2,9 @@
 
 return [
     'modules' => [
+        'DoctrineModule',
+        'ZfcBase',
+        'ZfcUser',
         'Application',
     ],
 
