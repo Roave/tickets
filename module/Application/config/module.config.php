@@ -53,7 +53,7 @@ return [
 
     'controllers' => [
         'invokables' => [
-            'Application\Controller\Index' => 'Application\Controller\IndexController'
+            'Application\Controller\IndexController' => 'Application\Controller\IndexController'
         ],
     ],
 
