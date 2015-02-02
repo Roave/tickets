@@ -14,9 +14,10 @@
     "homepage": "http://roave.com/",
     "require": {
         "php": ">=5.4",
-        "zendframework/zendframework": "2.3.*",
-        "doctrine/doctrine-module": "0.*",
-        "zf-commons/zfc-user": "1.*",
+        "beelab/bowerphp":                  "0.2.*@alpha",
+        "zf-commons/zfc-user":              "1.*",
+        "doctrine/doctrine-module":         "0.*",
+        "zendframework/zendframework":      "2.3.*",
         "zf-commons/zfc-user-doctrine-orm": "dev-master"
     }
 }
