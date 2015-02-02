@@ -8,7 +8,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "Application\\": "module/Application"
+            "Application\\": "module/Application/src/Application"
         }
     },
     "homepage": "http://roave.com/",
