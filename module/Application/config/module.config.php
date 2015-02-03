@@ -24,7 +24,7 @@ return [
                 'options' => [
                     'route'    => '/',
                     'defaults' => [
-                        'controller' => 'Application\Controller\Index',
+                        'controller' => 'Application\Controller\IndexController',
                         'action'     => 'index',
                     ],
                 ],
