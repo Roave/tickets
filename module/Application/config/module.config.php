@@ -16,15 +16,20 @@
  * and is licensed under the MIT license.
  */
 
+use Zend\Mvc\Router\Http\Literal;
+use Application\Controller\IndexController;
+use Zend\Cache\Service\StorageCacheAbstractServiceFactory;
+use Zend\Log\LoggerAbstractServiceFactory;
+
 return [
     'router' => [
         'routes' => [
             'home' => [
-                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'type' => Literal::class,
                 'options' => [
                     'route'    => '/',
                     'defaults' => [
-                        'controller' => 'Application\Controller\IndexController',
+                        'controller' => IndexController::class,
                         'action'     => 'index',
                     ],
                 ],
@@ -35,9 +40,8 @@ return [
                 'options' => [
                     'route'    => '/application',
                     'defaults' => [
-                        '__NAMESPACE__' => 'Application\Controller',
-                        'controller'    => 'Index',
-                        'action'        => 'index',
+                        'controller' => IndexController::class,
+                        'action'     => 'index',
                     ],
                 ],
             ],
@@ -46,14 +50,14 @@ return [
 
     'service_manager' => [
         'abstract_factories' => [
-            'Zend\Cache\Service\StorageCacheAbstractServiceFactory',
-            'Zend\Log\LoggerAbstractServiceFactory',
+            StorageCacheAbstractServiceFactory::class,
+            LoggerAbstractServiceFactory::class,
         ]
     ],
 
     'controllers' => [
         'invokables' => [
-            'Application\Controller\IndexController' => 'Application\Controller\IndexController'
+            IndexController::class => IndexController::class
         ],
     ],
 
