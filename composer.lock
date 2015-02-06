@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "1fce51b804c094e646b3b562564ae5af",
+    "hash": "e17a3df3c6068e30d1a24a77f752a86c",
     "packages": [
         {
             "name": "beelab/bowerphp",
@@ -1534,16 +1534,16 @@
         },
         {
             "name": "zf-commons/zfc-user-doctrine-orm",
-            "version": "dev-master",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ZF-Commons/ZfcUserDoctrineORM.git",
-                "reference": "90442b16ea68af7b340c99f298848aad8ec29cc6"
+                "reference": "9a2e148c9a5a03ca8592b93ea28a21e37b06e053"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ZF-Commons/ZfcUserDoctrineORM/zipball/90442b16ea68af7b340c99f298848aad8ec29cc6",
-                "reference": "90442b16ea68af7b340c99f298848aad8ec29cc6",
+                "url": "https://api.github.com/repos/ZF-Commons/ZfcUserDoctrineORM/zipball/9a2e148c9a5a03ca8592b93ea28a21e37b06e053",
+                "reference": "9a2e148c9a5a03ca8592b93ea28a21e37b06e053",
                 "shasum": ""
             },
             "require": {
@@ -1586,15 +1586,14 @@
             "keywords": [
                 "zf2"
             ],
-            "time": "2014-11-29 18:06:10"
+            "time": "2014-04-18 10:21:19"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "beelab/bowerphp": 15,
-        "zf-commons/zfc-user-doctrine-orm": 20
+        "beelab/bowerphp": 15
     },
     "prefer-stable": false,
     "prefer-lowest": false,
