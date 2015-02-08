@@ -3,8 +3,10 @@
 return [
     'modules' => [
         'DoctrineModule',
+        'DoctrineORMModule',
         'ZfcBase',
         'ZfcUser',
+        'ZfcUserDoctrineORM',
         'Application',
     ],
 
