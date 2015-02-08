@@ -1,5 +1,2 @@
-._*
-.~lock.*
-.buildpath
-.DS_Store
+*local
 vendor

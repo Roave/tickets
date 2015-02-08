@@ -36,7 +36,7 @@ return [
             ],
 
             'application' => [
-                'type'    => 'Literal',
+                'type'    => Literal::class,
                 'options' => [
                     'route'    => '/application',
                     'defaults' => [
@@ -71,4 +71,12 @@ return [
             __DIR__ . '/../view',
         ],
     ],
+
+    'doctrine' => [
+        'driver' => [
+            [
+                'paths' => [__DIR__ . '/../src/Application/Entity']
+            ]
+        ]
+    ]
 ];
