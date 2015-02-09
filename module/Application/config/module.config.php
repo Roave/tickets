@@ -73,9 +73,7 @@ return [
 
     'service_manager' => [
         'abstract_factories' => [
-            StorageCacheAbstractServiceFactory::class,
-            LoggerAbstractServiceFactory::class,
-        ]
+        ],
     ],
 
     'controllers' => [
