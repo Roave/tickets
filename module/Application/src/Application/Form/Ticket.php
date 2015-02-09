@@ -78,16 +78,6 @@ class Ticket extends Form
         ]);
 
         $this->add([
-            'name' => 'created_at',
-            'options' => [
-                'type' => 'hidden',
-            ],
-            'attributes' => [
-                'id' => 'created_at',
-            ]
-        ]);
-
-        $this->add([
             'name' => 'status',
             'options' => [
                 'type' => 'select',

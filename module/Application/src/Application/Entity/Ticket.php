@@ -18,48 +18,46 @@
 
 namespace Application\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
- * @Entity
- * @Table(name="ticket")
+ * @ORM\Entity
+ * @ORM\Table(name="ticket")
  */
 class Ticket
 {
     /**
-     * @Id
-     * @GeneratedValue
-     * @Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue
+     * @ORM\Column(name="id", type="integer")
      */
     private $id;
     /**
-     * @Column(name="project_id", type="integer")
+     * @ORM\Column(name="project_id", type="integer")
      */
     private $projectId;
     /**
-     * @Column(name="subject", type="varchar", length="255")
+     * @ORM\Column(name="subject", type="varchar", length="255")
      */
     private $subject;
     /**
-     * @Column(name="description", type="text")
+     * @ORM\Column(name="description", type="text")
      */
     private $description;
     /**
-     * @Column(name="importance", type="integer")
+     * @ORM\Column(name="importance", type="integer")
      */
     private $importance;
     /**
-     * @Column(name="opened_by", type="integer")
+     * @ORM\Column(name="opened_by", type="integer")
      */
     private $openedBy;
     /**
-     * @Column(name="created_at", type="datetime")
-     */
-    private $createdAt;
-    /**
-     * @Column(name="status", type="boolean")
+     * @ORM\Column(name="status", type="boolean")
      */
     private $status;
     /**
-     * @Column(name="responsible", type="integer", length="20")
+     * @ORM\Column(name="responsible", type="integer", length="20")
      */
     private $responsible;
 }
