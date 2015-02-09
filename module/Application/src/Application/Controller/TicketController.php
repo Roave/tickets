@@ -26,7 +26,9 @@ class TicketController extends AbstractActionController
 {
     public function openAction()
     {
-        $form = new Ticket();
+        $form = $this->getServiceLocator()
+            ->get('FormElementManager')
+            ->get(Ticket::class);
 
         return new ViewModel([
             'form' => $form
