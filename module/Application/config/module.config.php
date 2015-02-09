@@ -57,6 +57,17 @@ return [
                     ],
                 ],
             ],
+
+            'register-ticket' => [
+                'type'    => Literal::class,
+                'options' => [
+                    'route'    => '/ticket/register',
+                    'defaults' => [
+                        'controller' => TicketController::class,
+                        'action'     => 'register',
+                    ],
+                ],
+            ],
         ],
     ],
 
