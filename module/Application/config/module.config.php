@@ -99,8 +99,8 @@ return [
     'doctrine' => [
         'driver' => [
             [
-                'paths' => [__DIR__ . '/../src/Application/Entity']
-            ]
-        ]
-    ]
+                'paths' => [__DIR__ . '/../src/Application/Entity'],
+            ],
+        ],
+    ],
 ];
