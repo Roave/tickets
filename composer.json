@@ -13,7 +13,7 @@
     },
     "homepage": "http://roave.com/",
     "require": {
-        "php": ">=5.5",
+        "php":                              "~5.6",
         "beelab/bowerphp":                  "0.2.*@alpha",
         "zf-commons/zfc-user":              "1.*",
         "doctrine/doctrine-module":         "0.8.*",
