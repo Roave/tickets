@@ -20,14 +20,14 @@ namespace Application\Entity;
 
 /**
  * @Entity
- * @Table(name="client")
+ * @Table(name="consultant")
  */
-class Client
+class Consultant
 {
     /**
      * @Id
      * @GeneratedValue
-     * @Column(type="integer", length="20")
+     * @Column(name="id", type="integer")
      */
     private $id;
     /**
@@ -35,41 +35,33 @@ class Client
      */
     private $name;
     /**
-     * @Column(type="boolean")
-     */
-    private $active;
-    /**
-     * @Column(type="datetime")
-     */
-    private $birthday;
-    /**
-     * @Column(type="varchar", length="50", nullable="true")
-     */
-    private $phone;
-    /**
-     * @Column(name="mobile_phone", type="varchar", length="50", nullable="true")
-     */
-    private $mobilePhone;
-    /**
      * @Column(type="varchar", length="255")
-     */
-    private $address;
-    /**
-     * @Column(type="varchar", length="50")
-     */
-    private $country;
-    /**
-     * @Column(type="varchar")
      */
     private $mail;
     /**
-     * @Column(type="varchar")
+     * @Column(type="varchar", length="255")
      */
-    private $vatId;
+    private $twitter;
     /**
-     * @Column(type="text")
+     * @Column(type="varchar", length="255")
      */
-    private $observation;
+    private $facebook;
+    /**
+     * @Column(type="varchar", length="255")
+     */
+    private $github;
+    /**
+     * @Column(type="varchar", length="255")
+     */
+    private $phone;
+    /**
+     * @Column(type="varchar", length="255")
+     */
+    private $mobilePhone;
+    /**
+     * @Column(type="boolean")
+     */
+    private $status;
     /**
      * @Column(name="created_at", type="datetime")
      */
