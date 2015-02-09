@@ -19,8 +19,6 @@
 use Zend\Mvc\Router\Http\Literal;
 use Application\Controller\IndexController;
 use Application\Controller\TicketController;
-use Zend\Cache\Service\StorageCacheAbstractServiceFactory;
-use Zend\Log\LoggerAbstractServiceFactory;
 
 return [
     'router' => [
