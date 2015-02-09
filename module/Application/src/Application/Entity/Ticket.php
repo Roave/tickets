@@ -53,9 +53,9 @@ class Ticket
      */
     private $openedBy;
     /**
-     * @ORM\Column(name="status", type="boolean")
+     * @ORM\Column(name="active", type="boolean")
      */
-    private $status;
+    private $active;
     /**
      * @ORM\Column(name="responsible", type="integer", length="20")
      */
