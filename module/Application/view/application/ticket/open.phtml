@@ -1,0 +1,33 @@
+<h1>Open new ticket</h1>
+
+<?php
+$form = $this->form;
+$form->setAttribute('action', $this->url('register-ticket'));
+
+echo $this->form()->openTag($form);
+?>
+<div>
+    <?php
+        echo $this->formHidden($form->get('id'));
+        echo $this->formHidden($form->get('created_at'));
+        echo $this->formHidden($form->get('opened_by'));
+    ?>
+</div>
+
+<div>
+    <?php echo $this->formRow($form->get('subject')); ?>
+</div>
+<div>
+    <?php echo $this->formRow($form->get('description')); ?>
+</div>
+<div>
+    <?php echo $this->formRow($form->get('importance')); ?>
+</div>
+<div>
+    <?php echo $this->formRow($form->get('responsible')); ?>
+</div>
+<div>
+    <?php echo $this->formSubmit($form->get('submit')); ?>
+</div>
+
+<?php echo $this->form()->closeTag(); ?>

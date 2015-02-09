@@ -108,5 +108,16 @@ class Ticket extends Form
                 'id' => 'responsible',
             ]
         ]);
+
+        $this->add([
+            'name' => 'submit',
+            'options' => [
+                'type' => 'submit',
+            ],
+            'attributes' => [
+                'value' => 'Open Ticket',
+                'class' => 'btn btn-success',
+            ]
+        ]);
     }
 }
