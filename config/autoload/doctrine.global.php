@@ -12,7 +12,7 @@ return [
                     'port' => '3306',
                     'dbname' => 'tickets',
                     'driverOptions' => [
-                        PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'UTF8'"
+                        'encoding' => 'utf8',
                     ]
                 ]
             ]
