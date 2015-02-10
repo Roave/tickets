@@ -19,14 +19,30 @@
 namespace Application\Controller;
 
 use Application\Command\Ticket\OpenNewTicket;
-use Application\Command\Ticket\TicketCommand;
+use Application\Command\Ticket\TicketHandler;
 use Application\Entity\Ticket as TicketEntity;
 use Application\Form\Ticket;
+use Zend\Form\FormElementManager;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
 class TicketController extends AbstractActionController
 {
+    /**
+     * @var TicketHandler
+     */
+    protected $commandTicket;
+    /**
+     * @var FormElementManager
+     */
+    protected $formManager;
+
+    public function __construct(TicketHandler $commandTicket, FormElementManager $formManager)
+    {
+        $this->commandTicket = $commandTicket;
+        $this->formManager   = $formManager;
+    }
+
     public function indexAction()
     {
         return new ViewModel();
@@ -35,8 +51,7 @@ class TicketController extends AbstractActionController
     public function openAction()
     {
         $form = $this
-            ->getServiceLocator()
-            ->get('FormElementManager')
+            ->formManager
             ->get(Ticket::class);
 
         return new ViewModel([
@@ -47,11 +62,11 @@ class TicketController extends AbstractActionController
     public function registerAction()
     {
         $params = $this->params()->fromPost();
+
         $ticket = new TicketEntity();
         $ticket->fillEntity($params);
 
-        $ticketCommand = new TicketCommand();
-        $ticketCommand->handleOpenNewTicket(new OpenNewTicket($ticket));
+        $this->commandTicket->handleOpenNewTicket(new OpenNewTicket($ticket));
 
         $this->postRedirectGet('ticket-index');
     }
