@@ -19,6 +19,7 @@
 namespace Application\Controller;
 
 use Application\Command\Ticket\OpenNewTicket;
+use Application\Command\Ticket\TicketCommand;
 use Application\Entity\Ticket as TicketEntity;
 use Application\Form\Ticket;
 use Zend\Mvc\Controller\AbstractActionController;
@@ -49,7 +50,9 @@ class TicketController extends AbstractActionController
         $ticket = new TicketEntity();
         $ticket->fillEntity($params);
 
-        new OpenNewTicket($ticket);
+        $ticketCommand = new TicketCommand();
+        $ticketCommand->handleOpenNewTicket(new OpenNewTicket($ticket));
+
         $this->postRedirectGet('ticket-index');
     }
 }
