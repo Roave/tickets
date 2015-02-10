@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "998855a8fd019325526fb43d76d7f33c",
+    "hash": "85c9d41e782be3f8e837df1ac5bfd548",
     "packages": [
         {
             "name": "beelab/bowerphp",
