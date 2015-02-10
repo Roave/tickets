@@ -45,6 +45,17 @@ return [
                 ],
             ],
 
+            'ticket-index' => [
+                'type'    => Literal::class,
+                'options' => [
+                    'route'    => '/ticket',
+                    'defaults' => [
+                        'controller' => TicketController::class,
+                        'action'     => 'index',
+                    ],
+                ],
+            ],
+
             'open-ticket' => [
                 'type'    => Literal::class,
                 'options' => [
