@@ -60,4 +60,132 @@ class Ticket
      * @ORM\Column(name="responsible", type="integer", length="20")
      */
     private $responsible;
+
+    /**
+     * @return mixed
+     */
+    public function getResponsible()
+    {
+        return $this->responsible;
+    }
+
+    /**
+     * @param mixed $responsible
+     */
+    public function setResponsible($responsible)
+    {
+        $this->responsible = $responsible;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getProjectId()
+    {
+        return $this->projectId;
+    }
+
+    /**
+     * @param mixed $projectId
+     */
+    public function setProjectId($projectId)
+    {
+        $this->projectId = $projectId;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSubject()
+    {
+        return $this->subject;
+    }
+
+    /**
+     * @param mixed $subject
+     */
+    public function setSubject($subject)
+    {
+        $this->subject = $subject;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param mixed $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImportance()
+    {
+        return $this->importance;
+    }
+
+    /**
+     * @param mixed $importance
+     */
+    public function setImportance($importance)
+    {
+        $this->importance = $importance;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getOpenedBy()
+    {
+        return $this->openedBy;
+    }
+
+    /**
+     * @param mixed $openedBy
+     */
+    public function setOpenedBy($openedBy)
+    {
+        $this->openedBy = $openedBy;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getActive()
+    {
+        return $this->active;
+    }
+
+    /**
+     * @param mixed $active
+     */
+    public function setActive($active)
+    {
+        $this->active = $active;
+    }
 }
