@@ -18,60 +18,42 @@
 
 namespace Application\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
- * @Entity
- * @Table(name="client")
+ * @ORM\Entity
+ * @ORM\Table(name="client")
  */
 class Client
 {
     /**
-     * @Id
-     * @GeneratedValue
-     * @Column(type="integer", length="20")
+     * @ORM\Id
+     * @ORM\GeneratedValue
+     * @ORM\Column(type="integer", length="20")
      */
     private $id;
     /**
-     * @Column(type="varchar", length="255")
+     * @ORM\Column(type="varchar", length="255")
      */
     private $name;
     /**
-     * @Column(type="boolean")
-     */
-    private $active;
-    /**
-     * @Column(type="datetime")
-     */
-    private $birthday;
-    /**
-     * @Column(type="varchar", length="50", nullable="true")
+     * @ORM\Column(type="varchar", length="50", nullable="true")
      */
     private $phone;
     /**
-     * @Column(name="mobile_phone", type="varchar", length="50", nullable="true")
-     */
-    private $mobilePhone;
-    /**
-     * @Column(type="varchar", length="255")
-     */
-    private $address;
-    /**
-     * @Column(type="varchar", length="50")
+     * @ORM\Column(type="varchar", length="50")
      */
     private $country;
     /**
-     * @Column(type="varchar")
+     * @ORM\Column(type="varchar")
      */
     private $mail;
     /**
-     * @Column(type="varchar")
+     * @ORM\Column(type="varchar")
      */
     private $vatId;
     /**
-     * @Column(type="text")
+     * @ORM\Column(type="boolean")
      */
-    private $observation;
-    /**
-     * @Column(name="created_at", type="datetime")
-     */
-    private $createdAt;
+    private $active;
 }

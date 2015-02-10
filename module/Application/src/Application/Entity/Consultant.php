@@ -18,52 +18,30 @@
 
 namespace Application\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
- * @Entity
- * @Table(name="consultant")
+ * @ORM\Entity
+ * @ORM\Table(name="consultant")
  */
 class Consultant
 {
     /**
-     * @Id
-     * @GeneratedValue
-     * @Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue
+     * @ORM\Column(name="id", type="integer")
      */
     private $id;
     /**
-     * @Column(type="varchar", length="255")
+     * @ORM\Column(type="varchar", length="255")
      */
     private $name;
     /**
-     * @Column(type="varchar", length="255")
+     * @ORM\Column(type="varchar", length="255")
      */
     private $mail;
     /**
-     * @Column(type="varchar", length="255")
+     * @ORM\Column(name="active", type="boolean")
      */
-    private $twitter;
-    /**
-     * @Column(type="varchar", length="255")
-     */
-    private $facebook;
-    /**
-     * @Column(type="varchar", length="255")
-     */
-    private $github;
-    /**
-     * @Column(type="varchar", length="255")
-     */
-    private $phone;
-    /**
-     * @Column(type="varchar", length="255")
-     */
-    private $mobilePhone;
-    /**
-     * @Column(type="boolean")
-     */
-    private $status;
-    /**
-     * @Column(name="created_at", type="datetime")
-     */
-    private $createdAt;
+    private $active;
 }
