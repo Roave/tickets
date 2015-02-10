@@ -31,7 +31,7 @@ class Ticket extends Form
         $this->add([
             'name' => 'id',
             'attributes' => [
-                'types' => 'hidden'
+                'type' => 'hidden'
             ],
         ]);
 
@@ -49,8 +49,8 @@ class Ticket extends Form
 
         $this->add([
             'name' => 'description',
+            'type' => 'textarea',
             'options' => [
-                'type' => 'textarea',
                 'label' => 'Description',
             ],
             'attributes' => [
@@ -61,9 +61,15 @@ class Ticket extends Form
 
         $this->add([
             'name' => 'importance',
+            'type' => 'select',
             'options' => [
-                'type' => 'select',
                 'label' => 'Importance',
+                'value_options' => [
+                    1 => 'Low',
+                    2 => 'Medium',
+                    3 => 'High',
+                    4 => 'Emergency',
+                ]
             ],
             'attributes' => [
                 'id' => 'importance',
@@ -72,15 +78,13 @@ class Ticket extends Form
 
         $this->add([
             'name' => 'opened_by',
-            'options' => [
-                'type' => 'hidden',
-            ],
+            'type' => 'hidden',
         ]);
 
         $this->add([
             'name' => 'status',
+            'type' => 'select',
             'options' => [
-                'type' => 'select',
                 'label' => 'Status',
             ],
             'attributes' => [
@@ -90,10 +94,7 @@ class Ticket extends Form
 
         $this->add([
             'name' => 'responsible',
-            'options' => [
-                'type' => 'select',
-                'label' => 'Consultant responsible',
-            ],
+            'type' => 'hidden',
             'attributes' => [
                 'id' => 'responsible',
             ]
