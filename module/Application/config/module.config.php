@@ -20,6 +20,8 @@ use Application\Command\Ticket\TicketHandler;
 use Zend\Mvc\Router\Http\Literal;
 use Application\Controller\IndexController;
 use Application\Controller\TicketController;
+use Zend\Mvc\Router\Http\Segment;
+use Doctrine\ORM\Mapping\Driver\AnnotationDriver;
 
 return [
     'router' => [
@@ -47,7 +49,7 @@ return [
             ],
 
             'ticket-index' => [
-                'type'    => Literal::class,
+                'type'    => Segment::class,
                 'options' => [
                     'route'    => '/ticket',
                     'defaults' => [
@@ -113,8 +115,18 @@ return [
 
     'doctrine' => [
         'driver' => [
-            [
-                'paths' => [__DIR__ . '/../src/Application/Entity'],
+            'application_entity' => [
+                'class' => AnnotationDriver::class,
+                'cache' => 'array',
+                'paths' => [
+                    __DIR__ . '/src/Application/Entity'
+                ],
+            ],
+        ],
+
+        'orm_default' => [
+            'drivers' => [
+                'Application\Entity' => 'application_entity'
             ],
         ],
     ],
