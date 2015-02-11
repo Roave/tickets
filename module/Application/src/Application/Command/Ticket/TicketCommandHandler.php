@@ -22,7 +22,7 @@ use Application\Entity\Ticket;
 use Doctrine\ORM\EntityManager;
 use Zend\Di\ServiceLocator;
 
-class TicketHandler
+class TicketCommandHandler
 {
     public function handleOpenNewTicket(OpenNewTicket $command, EntityManager $em)
     {

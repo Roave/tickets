@@ -14,6 +14,7 @@ return [
         'logout_redirect_route'             => 'zfcuser/login',
         'table_name'                        => 'user',
     ],
+
     'service_manager' => [
         'aliases' => [
             'zfcuser_zend_db_adapter' => Adapter::class,
