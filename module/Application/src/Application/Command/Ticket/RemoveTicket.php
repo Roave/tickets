@@ -18,6 +18,7 @@
 
 namespace Application\Command\Ticket;
 
-class OpenNewTicket extends TicketCommand
+
+class RemoveTicket extends TicketCommand
 {
 }
