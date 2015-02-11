@@ -24,18 +24,29 @@ use Zend\Di\ServiceLocator;
 
 class TicketCommandHandler
 {
-    public function handleOpenNewTicket(OpenNewTicket $command, EntityManager $em)
+    /**
+     * @var EntityManager
+     */
+    private $entityManager;
+
+    public function __construct(EntityManager $entityManager)
     {
-        $em->persist($command->getEntity());
-        $em->flush();
+        $this->entityManager = $entityManager;
     }
 
-    public function handleRemoveTicket(RemoveTicket $command, EntityManager $em)
+    public function handleOpenNewTicket(OpenNewTicket $command)
     {
-        $entity = $em->getRepository(Ticket::class)
+        $this->entityManager->persist($command->getEntity());
+        $this->entityManager->flush();
+    }
+
+    public function handleRemoveTicket(RemoveTicket $command)
+    {
+        $entity = $this->entityManager
+            ->getRepository(Ticket::class)
             ->findOneBy(['id' => $command->getIdentifier()]);
 
-        $em->remove($entity);
-        $em->flush();
+        $this->entityManager->remove($entity);
+        $this->entityManager->flush();
     }
 }
