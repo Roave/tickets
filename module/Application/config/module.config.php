@@ -49,7 +49,7 @@ return [
             ],
 
             'ticket-index' => [
-                'type'    => Segment::class,
+                'type'    => Literal::class,
                 'options' => [
                     'route'    => '/ticket',
                     'defaults' => [
@@ -66,6 +66,20 @@ return [
                     'defaults' => [
                         'controller' => TicketController::class,
                         'action'     => 'open',
+                    ],
+                ],
+            ],
+
+            'remove-ticket' => [
+                'type'    => Segment::class,
+                'options' => [
+                    'route'    => '/ticket/remove/:id',
+                    'constraints' => [
+                        'action'     => '[0-9]+',
+                    ],
+                    'defaults' => [
+                        'controller' => TicketController::class,
+                        'action'     => 'removeTicket',
                     ],
                 ],
             ],
