@@ -53,11 +53,11 @@ class Ticket
      */
     private $openedBy;
     /**
-     * @ORM\Column(name="active", type="boolean")
+     * @ORM\Column(name="active", type="boolean", nullable=true, options={"default"=1})
      */
     private $active;
     /**
-     * @ORM\Column(name="responsible", type="integer", length=20)
+     * @ORM\Column(name="responsible", type="integer", length=20, nullable=true)
      */
     private $responsible;
 
