@@ -18,7 +18,6 @@
 
 namespace Application\Command\Ticket;
 
-
 use InvalidArgumentException;
 
 class TicketIdentifier
