@@ -18,7 +18,23 @@
 
 namespace Application\Command\Ticket;
 
-
 class RemoveTicket extends TicketCommand
 {
+    /**
+     * @var TicketIdentifier
+     */
+    private $identifier;
+
+    public function __construct(TicketIdentifier $identifier)
+    {
+        $this->identifier = $identifier;
+    }
+
+    /**
+     * @return int
+     */
+    public function getIdentifier()
+    {
+        return $this->identifier->getIdentifier();
+    }
 }
