@@ -19,9 +19,11 @@
 namespace Application\Controller;
 
 use Application\Command\Ticket\OpenNewTicket;
-use Application\Command\Ticket\TicketHandler;
-use Application\Entity\Ticket as TicketEntity;
+use Application\Command\Ticket\RemoveTicket;
+use Application\Command\Ticket\TicketCommandHandler;
+use Application\Command\Ticket\TicketIdentifier;
 use Application\Form\Ticket;
+use Doctrine\ORM\EntityManager;
 use Zend\Form\FormElementManager;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
@@ -29,7 +31,7 @@ use Zend\View\Model\ViewModel;
 class TicketController extends AbstractActionController
 {
     /**
-     * @var TicketHandler
+     * @var TicketCommandHandler
      */
     protected $commandTicket;
     /**
@@ -37,7 +39,7 @@ class TicketController extends AbstractActionController
      */
     protected $formManager;
 
-    public function __construct(TicketHandler $commandTicket, FormElementManager $formManager)
+    public function __construct(TicketCommandHandler $commandTicket, FormElementManager $formManager)
     {
         $this->commandTicket = $commandTicket;
         $this->formManager   = $formManager;
@@ -63,11 +65,39 @@ class TicketController extends AbstractActionController
     {
         $params = $this->params()->fromPost();
 
-        $ticket = new TicketEntity();
-        $ticket->fillEntity($params);
-
-        $this->commandTicket->handleOpenNewTicket(new OpenNewTicket($ticket));
+        $this->commandTicket->handleOpenNewTicket(
+            new OpenNewTicket(
+                $params['subject'],
+                $params['description'],
+                $params['importance'],
+                1,
+                1
+            ),
+            $this->getEntityManager()
+        );
 
         $this->postRedirectGet('ticket-index');
+    }
+
+    public function removeTicketAction()
+    {
+        $id = $this->params('id');
+
+        $this->commandTicket->handleRemoveTicket(
+            new RemoveTicket(new TicketIdentifier($id)),
+            $this->getEntityManager()
+        );
+
+        $this->postRedirectGet('ticket-index');
+    }
+
+    /**
+     * @return EntityManager
+     */
+    protected function getEntityManager()
+    {
+        return $this
+            ->getServiceLocator()
+            ->get(EntityManager::class);
     }
 }

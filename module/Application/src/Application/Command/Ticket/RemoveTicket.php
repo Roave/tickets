@@ -25,6 +25,9 @@ class RemoveTicket extends TicketCommand
      */
     private $identifier;
 
+    /**
+     * @param TicketIdentifier $identifier
+     */
     public function __construct(TicketIdentifier $identifier)
     {
         $this->identifier = $identifier;
