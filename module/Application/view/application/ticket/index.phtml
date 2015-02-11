@@ -1,1 +1,28 @@
 <h1>Tickets list</h1>
+
+<div class="container">
+    <div class="row">
+        <a href="<?php echo $this->url; ?>/ticket/open" class="btn btn-success">Open new</a>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Subject</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            <?php foreach ($this->tickets as $ticket) : ?>
+                <tr>
+                    <td><?php echo $ticket->getSubject(); ?></td>
+                    <td><a href="<?php echo $this->url(); ?>/remove/<?php echo $ticket->getId(); ?>">remove</a></td>
+                </tr>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+</div>

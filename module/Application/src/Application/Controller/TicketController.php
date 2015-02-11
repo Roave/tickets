@@ -22,6 +22,7 @@ use Application\Command\Ticket\OpenNewTicket;
 use Application\Command\Ticket\RemoveTicket;
 use Application\Command\Ticket\TicketCommandHandler;
 use Application\Command\Ticket\TicketIdentifier;
+use Application\Entity\Ticket as TicketEntity;
 use Application\Form\Ticket;
 use Doctrine\ORM\EntityManager;
 use Zend\Form\FormElementManager;
@@ -47,7 +48,12 @@ class TicketController extends AbstractActionController
 
     public function indexAction()
     {
-        return new ViewModel();
+        $tickets = $this
+            ->getEntityManager()
+            ->getRepository(TicketEntity::class)
+            ->findAll();
+
+        return new ViewModel(['tickets' => $tickets]);
     }
 
     public function openAction()
@@ -88,7 +94,7 @@ class TicketController extends AbstractActionController
             $this->getEntityManager()
         );
 
-        $this->postRedirectGet('ticket-index');
+        $this->redirect('ticket-index');
     }
 
     /**
