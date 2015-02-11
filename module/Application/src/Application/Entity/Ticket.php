@@ -37,7 +37,7 @@ class Ticket
      */
     private $projectId;
     /**
-     * @ORM\Column(name="subject", type="varchar", length="255")
+     * @ORM\Column(name="subject", type="text", length=255)
      */
     private $subject;
     /**
@@ -57,7 +57,7 @@ class Ticket
      */
     private $active;
     /**
-     * @ORM\Column(name="responsible", type="integer", length="20")
+     * @ORM\Column(name="responsible", type="integer", length=20)
      */
     private $responsible;
 

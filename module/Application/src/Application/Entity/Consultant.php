@@ -33,11 +33,11 @@ class Consultant
      */
     private $id;
     /**
-     * @ORM\Column(type="varchar", length="255")
+     * @ORM\Column(type="text", length=255)
      */
     private $name;
     /**
-     * @ORM\Column(type="varchar", length="255")
+     * @ORM\Column(type="text", length=255)
      */
     private $mail;
     /**

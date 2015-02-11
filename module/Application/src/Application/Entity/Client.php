@@ -29,27 +29,27 @@ class Client
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
-     * @ORM\Column(type="integer", length="20")
+     * @ORM\Column(type="integer", length=20)
      */
     private $id;
     /**
-     * @ORM\Column(type="varchar", length="255")
+     * @ORM\Column(type="text", length=255)
      */
     private $name;
     /**
-     * @ORM\Column(type="varchar", length="50", nullable="true")
+     * @ORM\Column(type="text", length=50, nullable=true)
      */
     private $phone;
     /**
-     * @ORM\Column(type="varchar", length="50")
+     * @ORM\Column(type="text", length=50)
      */
     private $country;
     /**
-     * @ORM\Column(type="varchar")
+     * @ORM\Column(type="text")
      */
     private $mail;
     /**
-     * @ORM\Column(type="varchar")
+     * @ORM\Column(type="text")
      */
     private $vatId;
     /**
