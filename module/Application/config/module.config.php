@@ -17,6 +17,7 @@
  */
 
 use Application\Command\Ticket\TicketCommandHandler;
+use Doctrine\ORM\EntityManager;
 use Zend\Mvc\Router\Http\Literal;
 use Application\Controller\IndexController;
 use Application\Controller\TicketController;
@@ -109,9 +110,10 @@ return [
 
         'factories' => [
             TicketController::class => function ($em) {
-                $formManager = $em->getServiceLocator()->get('FormElementManager');
+                $formManager   = $em->getServiceLocator()->get('FormElementManager');
+                $entityManager = $em->getServiceLocator()->get(EntityManager::class);
 
-                return new TicketController(new TicketCommandHandler(), $formManager);
+                return new TicketController(new TicketCommandHandler($entityManager), $formManager);
             },
         ],
     ],
@@ -131,7 +133,7 @@ return [
         'driver' => [
             'application_entity' => [
                 'class' => AnnotationDriver::class,
-                'paths' => realpath(__DIR__ . '/../src/Application/Entity'),
+                'paths' => __DIR__ . '/../src/Application/Entity',
             ],
 
             'orm_default' => [

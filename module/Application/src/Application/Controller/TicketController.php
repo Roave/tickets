@@ -78,8 +78,7 @@ class TicketController extends AbstractActionController
                 $params['importance'],
                 1,
                 1
-            ),
-            $this->getEntityManager()
+            )
         );
 
         $this->postRedirectGet('ticket-index');
@@ -90,8 +89,7 @@ class TicketController extends AbstractActionController
         $id = $this->params('id');
 
         $this->commandTicket->handleRemoveTicket(
-            new RemoveTicket(new TicketIdentifier($id)),
-            $this->getEntityManager()
+            new RemoveTicket(new TicketIdentifier($id))
         );
 
         $this->redirect('ticket-index');
