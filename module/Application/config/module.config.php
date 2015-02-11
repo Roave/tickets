@@ -16,7 +16,7 @@
  * and is licensed under the MIT license.
  */
 
-use Application\Command\Ticket\TicketHandler;
+use Application\Command\Ticket\TicketCommandHandler;
 use Zend\Mvc\Router\Http\Literal;
 use Application\Controller\IndexController;
 use Application\Controller\TicketController;
@@ -97,7 +97,7 @@ return [
             TicketController::class => function ($em) {
                 $formManager = $em->getServiceLocator()->get('FormElementManager');
 
-                return new TicketController(new TicketHandler(), $formManager);
+                return new TicketController(new TicketCommandHandler(), $formManager);
             },
         ],
     ],
