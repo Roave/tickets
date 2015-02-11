@@ -117,16 +117,13 @@ return [
         'driver' => [
             'application_entity' => [
                 'class' => AnnotationDriver::class,
-                'cache' => 'array',
-                'paths' => [
-                    __DIR__ . '/../src/Application/Entity'
-                ],
+                'paths' => realpath(__DIR__ . '/../src/Application/Entity'),
             ],
-        ],
 
-        'orm_default' => [
-            'drivers' => [
-                'Application\Entity' => 'application_entity'
+            'orm_default' => [
+                'drivers' => [
+                    'Application\Entity' => 'application_entity',
+                ],
             ],
         ],
     ],
