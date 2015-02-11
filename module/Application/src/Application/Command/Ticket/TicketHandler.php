@@ -18,6 +18,7 @@
 
 namespace Application\Command\Ticket;
 
+use Application\Entity\Ticket;
 use Doctrine\ORM\EntityManager;
 use Zend\Di\ServiceLocator;
 
@@ -26,6 +27,15 @@ class TicketHandler
     public function handleOpenNewTicket(OpenNewTicket $command, EntityManager $em)
     {
         $em->persist($command->getEntity());
+        $em->flush();
+    }
+
+    public function handleRemoveTicket(RemoveTicket $command, EntityManager $em)
+    {
+        $entity = $em->getRepository(Ticket::class)
+            ->findOneBy(['id' => $command->getIdentifier()]);
+
+        $em->remove($entity);
         $em->flush();
     }
 }
