@@ -188,14 +188,4 @@ class Ticket
     {
         $this->active = $active;
     }
-
-    public function fillEntity(array $data)
-    {
-        $this->id = isset($data['id']) ?: null;
-        $this->description = isset($data['description']) ?: null;
-        $this->importance = isset($data['importance']) ?: null;
-        $this->subject = isset($data['subject']) ?: null;
-        $this->responsible = isset($data['responsible']) ?: $data['responsible'];
-        $this->active = isset($data['active']) ?: true;
-    }
 }
