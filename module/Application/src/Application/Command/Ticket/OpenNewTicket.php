@@ -18,6 +18,28 @@
 
 namespace Application\Command\Ticket;
 
-class OpenNewTicket extends TicketCommand
+class OpenNewTicket
 {
+    /**
+     * @var Ticket
+     */
+    protected $ticketEntity;
+
+    public function __construct($subject, $description, $importance, $projectId, $openedBy)
+    {
+        $this->ticketEntity = new Ticket();
+        $this->ticketEntity->setSubject($subject);
+        $this->ticketEntity->setDescription($description);
+        $this->ticketEntity->setImportance($importance);
+        $this->ticketEntity->setProjectId($projectId);
+        $this->ticketEntity->setOpenedBy($openedBy);
+    }
+
+    /**
+     * @return Ticket
+     */
+    public function getEntity()
+    {
+        return $this->ticketEntity;
+    }
 }

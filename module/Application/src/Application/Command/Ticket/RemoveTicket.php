@@ -18,7 +18,7 @@
 
 namespace Application\Command\Ticket;
 
-class RemoveTicket extends TicketCommand
+class RemoveTicket
 {
     /**
      * @var TicketIdentifier
