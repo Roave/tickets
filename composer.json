@@ -18,7 +18,7 @@
         "zf-commons/zfc-user":              "1.*",
         "doctrine/doctrine-module":         "0.8.*",
         "zendframework/zendframework":      "2.3.*",
-        "zf-commons/zfc-user-doctrine-orm": "1.0.0",
+        "zf-commons/zfc-user-doctrine-orm": "1.0.*",
         "doctrine/doctrine-orm-module":     "0.8.*"
     },
     "require-dev": {
