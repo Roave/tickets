@@ -34,20 +34,24 @@ class TicketController extends AbstractActionController
     /**
      * @var TicketCommandHandler
      */
-    protected $commandTicket;
+    protected $commandHandler;
     /**
      * @var FormElementManager
      */
     protected $formManager;
 
-    public function __construct(TicketCommandHandler $commandTicket, FormElementManager $formManager)
-    {
-        $this->commandTicket = $commandTicket;
-        $this->formManager   = $formManager;
+    //@TODO inject the form directly, not the FormElementManager.
+    public function __construct(
+        CommandBus $commandHandler,
+        FormElementManager $formManager
+    ) {
+        $this->commandHandler = $commandHandler;
+        $this->formManager    = $formManager;
     }
 
     public function indexAction()
     {
+        // inject the repository directly instead (constructor)?
         $tickets = $this
             ->getEntityManager()
             ->getRepository(TicketEntity::class)
@@ -58,6 +62,7 @@ class TicketController extends AbstractActionController
 
     public function openAction()
     {
+        // as said before, inject the form directly
         $form = $this
             ->formManager
             ->get(Ticket::class);
@@ -69,17 +74,32 @@ class TicketController extends AbstractActionController
 
     public function registerAction()
     {
+        // no form validation?
         $params = $this->params()->fromPost();
 
-        $this->commandTicket->handleOpenNewTicket(
+//        $this->form->setData($this->params()->fromPost());
+//
+//        if (! $this->form->isValid()) {
+//            return $this->openAction();
+//        }
+//
+//        $validData = $form->getValues();
+        $result = $this->commandHandler->handle(
             new OpenNewTicket(
-                $params['subject'],
-                $params['description'],
-                $params['importance'],
-                1,
-                1
+                $validData['subject'], // to be fetched from validated data!
+                $validData['description'], // to be fetched from validated data!
+                $validData['importance'], // to be fetched from validated data!
+                1, // @todo probably not needed
+                1 // @todo $this->authService->getIdentity()->getId()
             )
         );
+
+        if ($result) {
+            return $this->redirect(
+                'ticket/view',
+                ['ticketId' => $result->getTicketId()]
+            );
+        }
 
         $this->postRedirectGet('ticket-index');
     }
@@ -88,7 +108,9 @@ class TicketController extends AbstractActionController
     {
         $id = $this->params('id');
 
-        $this->commandTicket->handleRemoveTicket(
+        $this->commandHandler->handleRemoveTicket(
+            // not sure if `TicketIdentifier` is really needed for now (too complex)
+            // just $id is ok
             new RemoveTicket(new TicketIdentifier($id))
         );
 
@@ -97,6 +119,8 @@ class TicketController extends AbstractActionController
 
     /**
      * @return EntityManager
+     *
+     * Don't inject the EntityManager in Controllers - only repositories allowed!
      */
     protected function getEntityManager()
     {

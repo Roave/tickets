@@ -38,18 +38,19 @@ return [
                 ],
             ],
 
-            'application' => [
-                'type'    => Literal::class,
-                'options' => [
-                    'route'    => '/application',
-                    'defaults' => [
-                        'controller' => IndexController::class,
-                        'action'     => 'index',
-                    ],
-                ],
-            ],
+            // not needed:
+//            'application' => [
+//                'type'    => Literal::class,
+//                'options' => [
+//                    'route'    => '/application',
+//                    'defaults' => [
+//                        'controller' => IndexController::class,
+//                        'action'     => 'index',
+//                    ],
+//                ],
+//            ],
 
-            'ticket-index' => [
+            'ticket' => [
                 'type'    => Literal::class,
                 'options' => [
                     'route'    => '/ticket',
@@ -60,10 +61,13 @@ return [
                 ],
             ],
 
+            // move to child route
+            // if too complex, move to separate route config file
             'open-ticket' => [
                 'type'    => Literal::class,
                 'options' => [
-                    'route'    => '/ticket/open',
+                    // make this explicit (ticket open form page)
+                    'route'    => '/ticket/open-ticket-form',
                     'defaults' => [
                         'controller' => TicketController::class,
                         'action'     => 'open',
@@ -76,7 +80,8 @@ return [
                 'options' => [
                     'route'    => '/ticket/remove/:id',
                     'constraints' => [
-                        'action'     => '[0-9]+',
+                        // won't work for UUIDs (for now)
+                        'action'     => '[0-9]{16}',
                     ],
                     'defaults' => [
                         'controller' => TicketController::class,
@@ -98,7 +103,12 @@ return [
         ],
     ],
 
+    // delete
     'service_manager' => [
+        'factories' => [
+            // @todo to be defined:
+            'MyCommandBus' => 'CommandBusFactory',
+        ],
         'abstract_factories' => [
         ],
     ],
@@ -109,6 +119,7 @@ return [
         ],
 
         'factories' => [
+            // move this to a factory class
             TicketController::class => function ($em) {
                 $formManager   = $em->getServiceLocator()->get('FormElementManager');
                 $entityManager = $em->getServiceLocator()->get(EntityManager::class);
@@ -133,7 +144,7 @@ return [
         'driver' => [
             'application_entity' => [
                 'class' => AnnotationDriver::class,
-                'paths' => __DIR__ . '/../src/Application/Entity',
+                'paths' => realpath(__DIR__ . '/../src/Application/Entity'),
             ],
 
             'orm_default' => [

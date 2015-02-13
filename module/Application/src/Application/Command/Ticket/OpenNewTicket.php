@@ -21,25 +21,67 @@ namespace Application\Command\Ticket;
 class OpenNewTicket
 {
     /**
+     * Should NOT reference the ticket entity directly: only serializable data allowed!
+     * Entities change over time
+     * Command never changes (it has happened, period)
+     *
      * @var Ticket
      */
-    protected $ticketEntity;
+    //protected $ticketEntity;
+
+    private $subject;
+    private $description;
+    private $importance;
+    private $openedBy;
+    private $projectId;
 
     public function __construct($subject, $description, $importance, $projectId, $openedBy)
     {
-        $this->ticketEntity = new Ticket();
-        $this->ticketEntity->setSubject($subject);
-        $this->ticketEntity->setDescription($description);
-        $this->ticketEntity->setImportance($importance);
-        $this->ticketEntity->setProjectId($projectId);
-        $this->ticketEntity->setOpenedBy($openedBy);
+        // maybe throw exceptions on invalid types?
+        $this->subject = (string) $subject;
+        $this->description = $description;
+        $this->importance = $importance;
+        $this->projectId = $projectId; // project may not exist, but this must be a valid UUID format! (validate and throw exception)
+        $this->openedBy = $openedBy;
     }
 
     /**
      * @return Ticket
      */
-    public function getEntity()
+    public function getSubject()
     {
-        return $this->ticketEntity;
+        return $this->subject;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImportance()
+    {
+        return $this->importance;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getOpenedBy()
+    {
+        return $this->openedBy;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getProjectId()
+    {
+        return $this->projectId;
     }
 }

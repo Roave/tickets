@@ -19,6 +19,7 @@
 namespace Application\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Rhumsaa\Uuid\Uuid;
 
 /**
  * @ORM\Entity
@@ -28,14 +29,14 @@ class Ticket
 {
     /**
      * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\Column(name="id", type="string")
      */
     private $id;
     /**
      * @ORM\Column(name="project_id", type="integer")
      */
-    private $projectId;
+    //private $projectId;
     /**
      * @ORM\Column(name="subject", type="text", length=255)
      */
@@ -61,6 +62,12 @@ class Ticket
      */
     private $responsible;
 
+    public function __construct()
+    {
+        // example for UUIDs:
+        $this->id = Uuid::uuid4();
+    }
+
     /**
      * @return mixed
      */
@@ -72,13 +79,13 @@ class Ticket
     /**
      * @param mixed $responsible
      */
-    public function setResponsible($responsible)
-    {
-        $this->responsible = $responsible;
-    }
+//    public function setResponsible($responsible)
+//    {
+//        $this->responsible = $responsible;
+//    }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getId()
     {
@@ -86,28 +93,34 @@ class Ticket
     }
 
     /**
+     * Remove ALL setters for IDs (ID _NEVER EVER_ changes)
+     *
      * @param mixed $id
      */
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
+//    public function setId($id)
+//    {
+//        $this->id = $id;
+//    }
 
     /**
-     * @return mixed
+     * Project will probably not be needed
+     *
+     * Also, the methods should set/get a Project entity, not a Project ID
+     *
+     * @return Project
      */
-    public function getProjectId()
-    {
-        return $this->projectId;
-    }
+//    public function getProject()
+//    {
+//        return $this->project;
+//    }
 
     /**
      * @param mixed $projectId
      */
-    public function setProjectId($projectId)
-    {
-        $this->projectId = $projectId;
-    }
+//    public function setProject(Project $project)
+//    {
+//        $this->project = $project;
+//    }
 
     /**
      * @return mixed
@@ -118,12 +131,17 @@ class Ticket
     }
 
     /**
+     * Avoid setters: instead, write methods such as `updateFromTicketUpdateRequest(...)`
+     *
+     * Getting information: ok
+     * Setting information: it's an action, therefore it should be worded accordingly
+     *
      * @param mixed $subject
      */
-    public function setSubject($subject)
-    {
-        $this->subject = $subject;
-    }
+//    public function setSubject($subject)
+//    {
+//        $this->subject = $subject;
+//    }
 
     /**
      * @return mixed
@@ -136,10 +154,10 @@ class Ticket
     /**
      * @param mixed $description
      */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-    }
+//    public function setDescription($description)
+//    {
+//        $this->description = $description;
+//    }
 
     /**
      * @return mixed
@@ -152,10 +170,10 @@ class Ticket
     /**
      * @param mixed $importance
      */
-    public function setImportance($importance)
-    {
-        $this->importance = $importance;
-    }
+//    public function setImportance($importance)
+//    {
+//        $this->importance = $importance;
+//    }
 
     /**
      * @return mixed
@@ -168,10 +186,10 @@ class Ticket
     /**
      * @param mixed $openedBy
      */
-    public function setOpenedBy($openedBy)
-    {
-        $this->openedBy = $openedBy;
-    }
+//    public function setOpenedBy($openedBy)
+//    {
+//        $this->openedBy = $openedBy;
+//    }
 
     /**
      * @return mixed
@@ -184,8 +202,8 @@ class Ticket
     /**
      * @param mixed $active
      */
-    public function setActive($active)
-    {
-        $this->active = $active;
-    }
+//    public function setActive($active)
+//    {
+//        $this->active = $active;
+//    }
 }

@@ -19,6 +19,7 @@
 namespace Application\Form;
 
 use Zend\Form\Form;
+use Zend\Http\Request;
 
 class Ticket extends Form
 {
@@ -26,23 +27,20 @@ class Ticket extends Form
     {
         parent::__construct($name, $options);
 
-        $this->setAttribute('method', 'post');
+        $this->setAttribute('method', Request::METHOD_POST);
 
         $this->add([
             'name' => 'id',
-            'attributes' => [
-                'type' => 'hidden'
-            ],
+            'type' => 'hidden',
         ]);
 
         $this->add([
             'name' => 'subject',
+            'type' => 'text',
             'options' => [
-                'type' => 'text',
                 'label' => 'Subject',
             ],
             'attributes' => [
-                'id' => 'subject',
                 'placeholder' => 'Subject',
             ],
         ]);
@@ -54,7 +52,6 @@ class Ticket extends Form
                 'label' => 'Description',
             ],
             'attributes' => [
-                'id' => 'description',
                 'placeholder' => 'Description',
             ],
         ]);
@@ -65,14 +62,12 @@ class Ticket extends Form
             'options' => [
                 'label' => 'Importance',
                 'value_options' => [
+                    // @todo use class constants, when we have them
                     1 => 'Low',
                     2 => 'Medium',
                     3 => 'High',
                     4 => 'Emergency',
                 ]
-            ],
-            'attributes' => [
-                'id' => 'importance',
             ],
         ]);
 
@@ -87,24 +82,17 @@ class Ticket extends Form
             'options' => [
                 'label' => 'Status',
             ],
-            'attributes' => [
-                'id' => 'status',
-            ]
         ]);
 
         $this->add([
             'name' => 'responsible',
             'type' => 'hidden',
-            'attributes' => [
-                'id' => 'responsible',
-            ]
         ]);
 
         $this->add([
             'name' => 'submit',
-            'options' => [
-                'type' => 'submit',
-            ],
+            'type' => 'submit',
+
             'attributes' => [
                 'value' => 'Open Ticket',
                 'class' => 'btn btn-success',

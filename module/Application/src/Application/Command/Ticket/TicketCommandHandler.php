@@ -19,6 +19,7 @@
 namespace Application\Command\Ticket;
 
 use Application\Entity\Ticket;
+use Application\Event\Ticket\TicketWasCreated;
 use Doctrine\ORM\EntityManager;
 use Zend\Di\ServiceLocator;
 
@@ -36,8 +37,27 @@ class TicketCommandHandler
 
     public function handleOpenNewTicket(OpenNewTicket $command)
     {
+        $ticket = new Ticket();
+
+        $user    = $this->entityManager->find('User', $command->getOpenedBy());
+        $project = $this->entityManager->find('Project', $command->getProjectId());
+
+        if (! $user) {
+            throw new \DomainException(sprintf('No user found for ID %s', $command->getOpenedBy()));
+        }
+
+        $ticket->fromOpenCommand(
+            $command->getSubject(),
+            $command->getDescription(),
+            $command->getImportance(),
+            $user,
+            $project
+        );
+
         $this->entityManager->persist($command->getEntity());
         $this->entityManager->flush();
+
+        return new TicketWasCreated($ticket->getId());
     }
 
     public function handleRemoveTicket(RemoveTicket $command)
